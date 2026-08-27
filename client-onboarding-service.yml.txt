@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: client-onboarding-service
+
+  datasource:
+    url: jdbc:sqlserver://localhost;instanceName=SQLEXPRESS;databaseName=Advance_Java;encrypt=true;trustServerCertificate=true
+    username: sudarshan
+    password: Sudarshan@14
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.SQLServerDialect
+
+server:
+  port: 8081
