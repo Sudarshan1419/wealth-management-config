@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: client-onboarding-service
+              uri: lb://CLIENT-ONBOARDING-SERVICE
+              predicates:
+                - Path=/api/v1/clients/**
+
+            - id: transaction-processing-service
+              uri: lb://TRANSACTION-PROCESSING-SERVICE
+              predicates:
+                - Path=/api/v1/transactions/**
+
+            - id: portfolio-management-service
+              uri: lb://PORTFOLIO-MANAGEMENT-SERVICE
+              predicates:
+                - Path=/api/v1/portfolios/**
+
+            - id: reporting-service
+              uri: lb://REPORTING-SERVICE
+              predicates:
+                - Path=/api/v1/reports/**
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
